@@ -18,6 +18,9 @@ const int FSR_PIN = A0; // Pin connected to FSR/resistor divider
 const int ledPin1 = 3;
 const int ledPin2 = 5;
 const int ledPin3 = 6;
+const int ledPin4 = 9;
+const int ledPin5 = 10;
+const int ledPin6 = 11;
 // Measure the voltage at 5V and resistance of your 3.3k resistor, and enter
 // their value's below:
 const float VCC = 4.98; // Measured voltage of Ardunio 5V line
@@ -30,6 +33,9 @@ void setup()
   pinMode(ledPin1, OUTPUT);
   pinMode(ledPin2, OUTPUT);
   pinMode(ledPin3, OUTPUT);
+  pinMode(ledPin4, OUTPUT);
+  pinMode(ledPin5, OUTPUT);
+  pinMode(ledPin6, OUTPUT);
 }
 
 void loop() 
@@ -62,16 +68,22 @@ void loop()
         analogWrite(ledPin1, fadeValue);
         analogWrite(ledPin2, fadeValue);
         analogWrite(ledPin3, fadeValue);
+        analogWrite(ledPin4, fadeValue);
+        analogWrite(ledPin5, fadeValue);
+        analogWrite(ledPin6, fadeValue);
         // wait for 30 milliseconds to see the dimming effect
         delay(30);
       }
     
       // fade out from max to min in increments of 5 points:
-      for (int fadeValue = 255 ; fadeValue >= 0; fadeValue ++) {
+      for (int fadeValue = 255 ; fadeValue >= 0; fadeValue -=5) {
         // sets the value (range from 0 to 255):
         analogWrite(ledPin1, fadeValue);
         analogWrite(ledPin2, fadeValue);
         analogWrite(ledPin3, fadeValue);
+        analogWrite(ledPin4, fadeValue);
+        analogWrite(ledPin5, fadeValue);
+        analogWrite(ledPin6, fadeValue);
         // wait for 30 milliseconds to see the dimming effect
         delay(30);
       }  
